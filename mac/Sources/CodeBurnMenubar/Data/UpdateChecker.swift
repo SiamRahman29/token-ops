@@ -63,9 +63,7 @@ final class UpdateChecker {
     }
 
     func checkIfNeeded() async {
-        if installedCliVersion == nil {
-            installedCliVersion = Self.queryInstalledCliVersion()
-        }
+        installedCliVersion = Self.queryInstalledCliVersion()
         let lastCheck = UserDefaults.standard.double(forKey: lastCheckKey)
         let now = Date().timeIntervalSince1970
         if now - lastCheck < checkIntervalSeconds {
@@ -78,9 +76,7 @@ final class UpdateChecker {
 
     func check() async {
         updateError = nil
-        if installedCliVersion == nil {
-            installedCliVersion = Self.queryInstalledCliVersion()
-        }
+        installedCliVersion = Self.queryInstalledCliVersion()
         guard let url = URL(string: releasesAPI) else { return }
         var request = URLRequest(url: url)
         request.timeoutInterval = 30
