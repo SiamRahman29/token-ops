@@ -45,6 +45,9 @@ struct MenubarStatusCache {
     // (isSafe-validated) and period via the Period enum's fixed cliArg set.
     func writeRefreshScript(period: Period) throws {
         let env = CodeburnCLI.scriptEnvironment()
+        // Left unquoted on purpose: a multi-token argv (e.g. "node /path/cli.js")
+        // must word-split into separate argv elements. isSafe excludes all shell
+        // metacharacters, so the only thing a token can add is extra words.
         let binCommand = env.argv.joined(separator: " ")
         let tmpPath = statusPath + ".tmp"
         let body = """
