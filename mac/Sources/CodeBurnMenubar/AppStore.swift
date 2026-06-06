@@ -1110,6 +1110,7 @@ enum InsightMode: String, CaseIterable, Identifiable {
     case plan = "Plan"
     case trend = "Trend"
     case forecast = "Forecast"
+    case calendar = "Calendar"
     case pulse = "Pulse"
     case stats = "Stats"
     case optimize = "Optimize"
